@@ -36,42 +36,42 @@ subtitleLabel.BackgroundTransparency = 1
 subtitleLabel.Size = UDim2.new(1, -20, 0, 40)
 subtitleLabel.Position = UDim2.new(0, 10, 0, 30)
 
--- Button for Teleporting and Hitting Muscle King Mountain
-local muscleKingButton = Instance.new("TextButton")
-muscleKingButton.Name = "MuscleKingButton"
-muscleKingButton.Parent = mainFrame
-muscleKingButton.Text = "Teleport to Muscle King Mountain"
-muscleKingButton.Font = Enum.Font.SourceSansBold
-muscleKingButton.TextSize = 16
-muscleKingButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-muscleKingButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
-muscleKingButton.Size = UDim2.new(1, -20, 0, 40)
-muscleKingButton.Position = UDim2.new(0, 10, 1, -50)
+-- Button for Teleporting and Hitting Ancient Jungle Rock
+local ancientJungleButton = Instance.new("TextButton")
+ancientJungleButton.Name = "AncientJungleButton"
+ancientJungleButton.Parent = mainFrame
+ancientJungleButton.Text = "Teleport to Ancient Jungle Rock"
+ancientJungleButton.Font = Enum.Font.SourceSansBold
+ancientJungleButton.TextSize = 16
+ancientJungleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ancientJungleButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+ancientJungleButton.Size = UDim2.new(1, -20, 0, 40)
+ancientJungleButton.Position = UDim2.new(0, 10, 1, -50)
 
-muscleKingButton.MouseButton1Click:Connect(function()
+ancientJungleButton.MouseButton1Click:Connect(function()
     -- Print debug to make sure the button is clicked
     print("Button clicked! Trying to teleport...")
 
-    -- Check for Muscle King Mountain in the game
-    local muscleKingMountain = game.Workspace:FindFirstChild("Muscle King Mountain")
+    -- Check for Ancient Jungle Rock in the game
+    local ancientJungleRock = game.Workspace:FindFirstChild("Ancient Jungle Rock")
 
-    if muscleKingMountain then
-        -- Print debug to ensure Muscle King Mountain is found
-        print("Found Muscle King Mountain!")
+    if ancientJungleRock then
+        -- Print debug to ensure Ancient Jungle Rock is found
+        print("Found Ancient Jungle Rock!")
 
-        -- Teleport the player to Muscle King Mountain using CFrame
+        -- Teleport the player to Ancient Jungle Rock using CFrame
         local character = game.Players.LocalPlayer.Character
         if character and character:FindFirstChild("HumanoidRootPart") then
-            character.HumanoidRootPart.CFrame = muscleKingMountain.CFrame + Vector3.new(0, 5, 0)  -- Slight offset to avoid clipping
-            print("Teleported to Muscle King Mountain!")
+            character.HumanoidRootPart.CFrame = ancientJungleRock.CFrame + Vector3.new(0, 5, 0)  -- Slight offset to avoid clipping
+            print("Teleported to Ancient Jungle Rock!")
         else
             print("HumanoidRootPart not found!")
         end
     else
         -- Print debug if the object is not found
-        print("Muscle King Mountain not found!")
+        print("Ancient Jungle Rock not found!")
     end
-end
+end)
 
 -- Draggable GUI functionality (same as before)
 local dragging, dragInput, dragStart, startPos
