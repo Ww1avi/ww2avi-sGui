@@ -76,6 +76,7 @@ end)
 -- Draggable GUI functionality
 local dragging, dragInput, dragStart, startPos
 
+-- Function to start dragging
 mainFrame.InputBegan:Connect(function(input, gameProcessed)
     if gameProcessed then return end
     if input.UserInputType == Enum.UserInputType.MouseButton1 then
@@ -85,6 +86,7 @@ mainFrame.InputBegan:Connect(function(input, gameProcessed)
     end
 end)
 
+-- Function to drag the frame
 mainFrame.InputChanged:Connect(function(input)
     if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
         local delta = input.Position - dragStart
@@ -92,6 +94,7 @@ mainFrame.InputChanged:Connect(function(input)
     end
 end)
 
+-- Function to stop dragging
 mainFrame.InputEnded:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseButton1 then
         dragging = false
