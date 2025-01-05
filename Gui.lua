@@ -1,6 +1,6 @@
 -- Create the GUI
 local screenGui = Instance.new("ScreenGui")
-screenGui.Name = "DetectionsGUI"
+screenGui.Name = "Ww2avi's"
 screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 -- Main Frame
@@ -36,109 +36,36 @@ subtitleLabel.BackgroundTransparency = 1
 subtitleLabel.Size = UDim2.new(1, -20, 0, 40)
 subtitleLabel.Position = UDim2.new(0, 10, 0, 30)
 
--- Switch (Toggle)
-local switchLabel = Instance.new("TextLabel")
-switchLabel.Name = "SwitchLabel"
-switchLabel.Parent = mainFrame
-switchLabel.Text = "Switch"
-switchLabel.Font = Enum.Font.SourceSans
-switchLabel.TextSize = 14
-switchLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-switchLabel.BackgroundTransparency = 1
-switchLabel.Size = UDim2.new(0.5, 0, 0, 30)
-switchLabel.Position = UDim2.new(0, 10, 0, 80)
+-- Button for Teleporting and Hitting Muscle King Rock
+local muscleKingButton = Instance.new("TextButton")
+muscleKingButton.Name = "MuscleKingButton"
+muscleKingButton.Parent = mainFrame
+muscleKingButton.Text = "Teleport to Muscle King Rock"
+muscleKingButton.Font = Enum.Font.SourceSansBold
+muscleKingButton.TextSize = 16
+muscleKingButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+muscleKingButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+muscleKingButton.Size = UDim2.new(1, -20, 0, 40)
+muscleKingButton.Position = UDim2.new(0, 10, 1, -50)
 
-local switch = Instance.new("TextButton")
-switch.Name = "Switch"
-switch.Parent = mainFrame
-switch.Text = "OFF"
-switch.Font = Enum.Font.SourceSans
-switch.TextSize = 14
-switch.TextColor3 = Color3.fromRGB(255, 255, 255)
-switch.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-switch.Size = UDim2.new(0, 80, 0, 30)
-switch.Position = UDim2.new(1, -90, 0, 80)
-switch.MouseButton1Click:Connect(function()
-    if switch.Text == "OFF" then
-        switch.Text = "ON"
-        switch.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+muscleKingButton.MouseButton1Click:Connect(function()
+    -- Find Muscle King Rock in the game (assuming its position is known)
+    local muscleKingRock = game.Workspace:FindFirstChild("MuscleKingRock")
+
+    if muscleKingRock then
+        -- Teleport the player to Muscle King Rock
+        game.Players.LocalPlayer.Character:MoveTo(muscleKingRock.Position + Vector3.new(0, 5, 0))  -- Adjust the Y-coordinate to avoid falling through the ground
+        -- Add a hitting function (assuming we can "hit" it by some method)
+        -- Example: Trigger some kind of action to "hit" MuscleKingRock (this depends on how the game works)
+        -- Here we just simulate hitting by adding a message
+        game.ReplicatedStorage:WaitForChild("MuscleKingRockHit"):FireServer()  -- Replace this with the actual action or event to hit
+        print("Teleported and hit the Muscle King Rock!")
     else
-        switch.Text = "OFF"
-        switch.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        print("Muscle King Rock not found!")
     end
 end)
 
--- Input
-local inputLabel = Instance.new("TextLabel")
-inputLabel.Name = "InputLabel"
-inputLabel.Parent = mainFrame
-inputLabel.Text = "Input"
-inputLabel.Font = Enum.Font.SourceSans
-inputLabel.TextSize = 14
-inputLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-inputLabel.BackgroundTransparency = 1
-inputLabel.Size = UDim2.new(0.5, 0, 0, 30)
-inputLabel.Position = UDim2.new(0, 10, 0, 120)
-
-local inputBox = Instance.new("TextBox")
-inputBox.Name = "InputBox"
-inputBox.Parent = mainFrame
-inputBox.Text = "Dynamic Input"
-inputBox.Font = Enum.Font.SourceSans
-inputBox.TextSize = 14
-inputBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-inputBox.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-inputBox.Size = UDim2.new(0, 140, 0, 30)
-inputBox.Position = UDim2.new(1, -150, 0, 120)
-
--- Dropdown
-local dropdownLabel = Instance.new("TextLabel")
-dropdownLabel.Name = "DropdownLabel"
-dropdownLabel.Parent = mainFrame
-dropdownLabel.Text = "Dropdown"
-dropdownLabel.Font = Enum.Font.SourceSans
-dropdownLabel.TextSize = 14
-dropdownLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-dropdownLabel.BackgroundTransparency = 1
-dropdownLabel.Size = UDim2.new(0.5, 0, 0, 30)
-dropdownLabel.Position = UDim2.new(0, 10, 0, 160)
-
-local dropdown = Instance.new("TextButton")
-dropdown.Name = "Dropdown"
-dropdown.Parent = mainFrame
-dropdown.Text = "Option 1"
-dropdown.Font = Enum.Font.SourceSans
-dropdown.TextSize = 14
-dropdown.TextColor3 = Color3.fromRGB(255, 255, 255)
-dropdown.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-dropdown.Size = UDim2.new(0, 140, 0, 30)
-dropdown.Position = UDim2.new(1, -150, 0, 160)
-dropdown.MouseButton1Click:Connect(function()
-    if dropdown.Text == "Option 1" then
-        dropdown.Text = "Option 2"
-    elseif dropdown.Text == "Option 2" then
-        dropdown.Text = "Option 3"
-    else
-        dropdown.Text = "Option 1"
-    end
-end)
-
--- Button
-local button = Instance.new("TextButton")
-button.Name = "ActionButton"
-button.Parent = mainFrame
-button.Text = "Tap to Interact"
-button.Font = Enum.Font.SourceSans
-button.TextSize = 14
-button.TextColor3 = Color3.fromRGB(255, 255, 255)
-button.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-button.Size = UDim2.new(1, -20, 0, 30)
-button.Position = UDim2.new(0, 10, 1, -40)
-button.MouseButton1Click:Connect(function()
-    print("Button clicked!")
-end)
-
--- Dragging functionality
+-- Draggable GUI functionality (same as before)
 local dragging, dragInput, dragStart, startPos
 
 mainFrame.InputBegan:Connect(function(input, gameProcessed)
