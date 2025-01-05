@@ -36,11 +36,11 @@ subtitleLabel.BackgroundTransparency = 1
 subtitleLabel.Size = UDim2.new(1, -20, 0, 40)
 subtitleLabel.Position = UDim2.new(0, 10, 0, 30)
 
--- Button for Teleporting and Hitting Muscle King Rock
+-- Button for Teleporting and Hitting Muscle King Mountain
 local muscleKingButton = Instance.new("TextButton")
 muscleKingButton.Name = "MuscleKingButton"
 muscleKingButton.Parent = mainFrame
-muscleKingButton.Text = "Teleport to Muscle King Rock"
+muscleKingButton.Text = "Teleport to Muscle King Mountain"
 muscleKingButton.Font = Enum.Font.SourceSansBold
 muscleKingButton.TextSize = 16
 muscleKingButton.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -49,19 +49,22 @@ muscleKingButton.Size = UDim2.new(1, -20, 0, 40)
 muscleKingButton.Position = UDim2.new(0, 10, 1, -50)
 
 muscleKingButton.MouseButton1Click:Connect(function()
-    -- Find Muscle King Rock in the game (assuming its position is known)
-    local muscleKingRock = game.Workspace:FindFirstChild("MuscleKingRock")
-
-    if muscleKingRock then
-        -- Teleport the player to Muscle King Rock
-        game.Players.LocalPlayer.Character:MoveTo(muscleKingRock.Position + Vector3.new(0, 5, 0))  -- Adjust the Y-coordinate to avoid falling through the ground
+    -- Check for Muscle King Mountain in the game
+    local muscleKingMountain = game.Workspace:FindFirstChild("Muscle King Mountain")
+    
+    if muscleKingMountain then
+        -- Teleport the player to Muscle King Mountain using CFrame (more reliable)
+        local character = game.Players.LocalPlayer.Character
+        if character and character:FindFirstChild("HumanoidRootPart") then
+            character.HumanoidRootPart.CFrame = muscleKingMountain.CFrame + Vector3.new(0, 5, 0)  -- Slight offset to avoid clipping
+        end
         -- Add a hitting function (assuming we can "hit" it by some method)
-        -- Example: Trigger some kind of action to "hit" MuscleKingRock (this depends on how the game works)
+        -- Example: Trigger some kind of action to "hit" Muscle King Mountain (this depends on how the game works)
         -- Here we just simulate hitting by adding a message
-        game.ReplicatedStorage:WaitForChild("MuscleKingRockHit"):FireServer()  -- Replace this with the actual action or event to hit
-        print("Teleported and hit the Muscle King Rock!")
+        game.ReplicatedStorage:WaitForChild("MuscleKingMountainHit"):FireServer()  -- Replace with the actual action to hit
+        print("Teleported and hit the Muscle King Mountain!")
     else
-        print("Muscle King Rock not found!")
+        print("Muscle King Mountain not found!")
     end
 end)
 
