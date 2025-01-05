@@ -73,7 +73,7 @@ ancientJungleButton.MouseButton1Click:Connect(function()
     end
 end)
 
--- Draggable GUI functionality (same as before)
+-- Draggable GUI functionality
 local dragging, dragInput, dragStart, startPos
 
 mainFrame.InputBegan:Connect(function(input, gameProcessed)
