@@ -49,24 +49,29 @@ muscleKingButton.Size = UDim2.new(1, -20, 0, 40)
 muscleKingButton.Position = UDim2.new(0, 10, 1, -50)
 
 muscleKingButton.MouseButton1Click:Connect(function()
+    -- Print debug to make sure the button is clicked
+    print("Button clicked! Trying to teleport...")
+
     -- Check for Muscle King Mountain in the game
     local muscleKingMountain = game.Workspace:FindFirstChild("Muscle King Mountain")
-    
+
     if muscleKingMountain then
-        -- Teleport the player to Muscle King Mountain using CFrame (more reliable)
+        -- Print debug to ensure Muscle King Mountain is found
+        print("Found Muscle King Mountain!")
+
+        -- Teleport the player to Muscle King Mountain using CFrame
         local character = game.Players.LocalPlayer.Character
         if character and character:FindFirstChild("HumanoidRootPart") then
             character.HumanoidRootPart.CFrame = muscleKingMountain.CFrame + Vector3.new(0, 5, 0)  -- Slight offset to avoid clipping
+            print("Teleported to Muscle King Mountain!")
+        else
+            print("HumanoidRootPart not found!")
         end
-        -- Add a hitting function (assuming we can "hit" it by some method)
-        -- Example: Trigger some kind of action to "hit" Muscle King Mountain (this depends on how the game works)
-        -- Here we just simulate hitting by adding a message
-        game.ReplicatedStorage:WaitForChild("MuscleKingMountainHit"):FireServer()  -- Replace with the actual action to hit
-        print("Teleported and hit the Muscle King Mountain!")
     else
+        -- Print debug if the object is not found
         print("Muscle King Mountain not found!")
     end
-end)
+end
 
 -- Draggable GUI functionality (same as before)
 local dragging, dragInput, dragStart, startPos
