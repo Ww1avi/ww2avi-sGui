@@ -5,8 +5,8 @@ screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 -- Create the main Frame
 local mainFrame = Instance.new("Frame")
-mainFrame.Size = UDim2.new(0.4, 0, 0.3, 0) -- Scales relative to screen size
-mainFrame.Position = UDim2.new(0.5, 0, 0.5, 0) - UDim2.new(0.2, 0, 0.15, 0) -- Centers on the screen
+mainFrame.Size = UDim2.new(0, 500, 0, 350)
+mainFrame.Position = UDim2.new(0.5, -250, 0.5, -175)
 mainFrame.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
 mainFrame.BorderSizePixel = 0
 mainFrame.Parent = screenGui
@@ -44,12 +44,13 @@ end)
 
 -- Add the side menu
 local sideMenu = Instance.new("Frame")
-sideMenu.Size = UDim2.new(0, 100, 1, -30)
+sideMenu.Size = UDim2.new(0, 120, 1, -30)
 sideMenu.Position = UDim2.new(0, 0, 0, 30)
 sideMenu.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
 sideMenu.BorderSizePixel = 0
 sideMenu.Parent = mainFrame
 
+-- Function to create menu buttons with custom text
 local function createMenuButton(text, position)
     local button = Instance.new("TextButton")
     button.Size = UDim2.new(1, 0, 0, 30)
@@ -62,23 +63,25 @@ local function createMenuButton(text, position)
     button.Parent = sideMenu
 end
 
+-- Create menu buttons with updated labels
 createMenuButton("Menu", UDim2.new(0, 0, 0, 0))
-createMenuButton("House", UDim2.new(0, 0, 0, 30))
-createMenuButton("Avatar", UDim2.new(0, 0, 0, 60))
-createMenuButton("Vehicles", UDim2.new(0, 0, 0, 90))
-createMenuButton("Fun", UDim2.new(0, 0, 0, 120))
+createMenuButton("Auto hatch", UDim2.new(0, 0, 0, 30))
+createMenuButton("Auto crystal", UDim2.new(0, 0, 0, 60))
+createMenuButton("Teleports", UDim2.new(0, 0, 0, 90))
+createMenuButton("Auto Rebirth", UDim2.new(0, 0, 0, 120))
 
 -- Add the main content area
 local contentFrame = Instance.new("Frame")
-contentFrame.Size = UDim2.new(1, -100, 1, -30)
-contentFrame.Position = UDim2.new(0, 100, 0, 30)
+contentFrame.Size = UDim2.new(1, -120, 1, -30)
+contentFrame.Position = UDim2.new(0, 120, 0, 30)
 contentFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 contentFrame.BorderSizePixel = 0
 contentFrame.Parent = mainFrame
 
+-- Function to create content buttons
 local function createContentButton(text, position)
     local button = Instance.new("TextButton")
-    button.Size = UDim2.new(0, 250, 0, 30)
+    button.Size = UDim2.new(0, 350, 0, 30)
     button.Position = position
     button.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
     button.Text = text
