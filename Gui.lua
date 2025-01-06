@@ -5,8 +5,8 @@ screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 -- Create the main Frame
 local mainFrame = Instance.new("Frame")
-mainFrame.Size = UDim2.new(0, 400, 0, 250)
-mainFrame.Position = UDim2.new(0.5, -200, 0.5, -125)
+mainFrame.Size = UDim2.new(0.4, 0, 0.3, 0) -- Scales relative to screen size
+mainFrame.Position = UDim2.new(0.5, 0, 0.5, 0) - UDim2.new(0.2, 0, 0.15, 0) -- Centers on the screen
 mainFrame.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
 mainFrame.BorderSizePixel = 0
 mainFrame.Parent = screenGui
@@ -86,6 +86,14 @@ local function createContentButton(text, position)
     button.Font = Enum.Font.Gotham
     button.TextSize = 14
     button.Parent = contentFrame
+
+    -- Add button feedback
+    button.MouseButton1Click:Connect(function()
+        button.BackgroundColor3 = Color3.fromRGB(0, 150, 0) -- Change to green when clicked
+        wait(0.2)
+        button.BackgroundColor3 = Color3.fromRGB(50, 50, 50) -- Reset color
+    end)
+
     return button
 end
 
@@ -97,33 +105,39 @@ createContentButton("Refresh Avatar", UDim2.new(0, 10, 0, 130))
 
 -- Add functionality for the teleport button
 teleportButton.MouseButton1Click:Connect(function()
-    -- Replace with the exact position of the Ancient Jungle Rock in your game
     local player = game.Players.LocalPlayer
     local character = player.Character or player.CharacterAdded:Wait()
-    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
-    
-    -- Teleport to the updated rock position
+    local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+
+    if not humanoidRootPart then
+        warn("HumanoidRootPart not found!")
+        return
+    end
+
+    -- Teleport to the rock position
     local rockPosition = Vector3.new(-7694.34375, 6.8115034103393555, 2869.509521484371)
     humanoidRootPart.CFrame = CFrame.new(rockPosition)
 
-    -- Simulate a hit (e.g., perform a tool activation or proximity action)
+    -- Tool detection
     local tool = player.Backpack:FindFirstChildOfClass("Tool") or character:FindFirstChildOfClass("Tool")
-    if tool then
-        print("Tool found, activating...")  -- Debug output to check if the tool is found
-        tool:Activate() -- Simulates hitting the rock
-    else
-        print("No tool found!")  -- Debug output if no tool is found
+    if not tool then
+        print("No tool found!")
+        return
     end
 
-    -- Auto punch: simulate punching every 0.5 seconds
-    while true do
-        wait(0.5)  -- Adjust the time interval between punches (in seconds)
+    print("Tool found, activating...")
+    tool:Activate()
+
+    -- Auto-punch logic
+    local autoPunch = true
+    while autoPunch do
+        wait(0.5)
         if tool then
-            tool:Activate()  -- Activate the tool to simulate punching
+            tool:Activate()
             print("Auto-punch activated")
         else
             print("No tool found for auto-punch!")
-            break
+            autoPunch = false
         end
     end
 end)
