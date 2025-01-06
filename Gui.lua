@@ -1,6 +1,6 @@
 -- Create the main ScreenGui
 local screenGui = Instance.new("ScreenGui")
-screenGui.Name = "IceHubGUI"
+screenGui.Name = "MuscleLegendsGUI"
 screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 -- Create the main Frame
@@ -21,7 +21,7 @@ local titleBar = Instance.new("TextLabel")
 titleBar.Size = UDim2.new(1, 0, 0, 30)
 titleBar.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
 titleBar.BorderSizePixel = 0
-titleBar.Text = "IceHub - Brookhaven"
+titleBar.Text = "Ww2avi's Muscle Legends"
 titleBar.TextColor3 = Color3.fromRGB(255, 255, 255)
 titleBar.Font = Enum.Font.Gotham
 titleBar.TextSize = 16
@@ -86,9 +86,29 @@ local function createContentButton(text, position)
     button.Font = Enum.Font.Gotham
     button.TextSize = 14
     button.Parent = contentFrame
+    return button
 end
 
-createContentButton("Targeted", UDim2.new(0, 10, 0, 10))
+-- Buttons in the main content area
+local teleportButton = createContentButton("Teleport to Ancient Jungle Rock", UDim2.new(0, 10, 0, 10))
 createContentButton("Copy Avatar", UDim2.new(0, 10, 0, 50))
 createContentButton("Goto", UDim2.new(0, 10, 0, 90))
 createContentButton("Refresh Avatar", UDim2.new(0, 10, 0, 130))
+
+-- Add functionality for the teleport button
+teleportButton.MouseButton1Click:Connect(function()
+    -- Replace with the exact position of the Ancient Jungle Rock in your game
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+    
+    -- Teleport to the rock (updated coordinates)
+    local rockPosition = Vector3.new(-7677.6826171875, 6.811504364013672, 2842.9833984345)
+    humanoidRootPart.CFrame = CFrame.new(rockPosition)
+
+    -- Simulate a hit (e.g., perform a tool activation or proximity action)
+    local tool = player.Backpack:FindFirstChildOfClass("Tool") or character:FindFirstChildOfClass("Tool")
+    if tool then
+        tool:Activate() -- Simulates hitting the rock
+    end
+end)
