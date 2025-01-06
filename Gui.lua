@@ -102,13 +102,16 @@ teleportButton.MouseButton1Click:Connect(function()
     local character = player.Character or player.CharacterAdded:Wait()
     local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
     
-    -- Teleport to the rock (updated coordinates)
-    local rockPosition = Vector3.new(-7677.6826171875, 6.811504364013672, 2842.9833984345)
+    -- Teleport to the updated rock position
+    local rockPosition = Vector3.new(-7694.34375, 6.8115034103393555, 2869.509521484371)
     humanoidRootPart.CFrame = CFrame.new(rockPosition)
 
     -- Simulate a hit (e.g., perform a tool activation or proximity action)
     local tool = player.Backpack:FindFirstChildOfClass("Tool") or character:FindFirstChildOfClass("Tool")
     if tool then
+        print("Tool found, activating...")  -- Debug output to check if the tool is found
         tool:Activate() -- Simulates hitting the rock
+    else
+        print("No tool found!")  -- Debug output if no tool is found
     end
 end)
