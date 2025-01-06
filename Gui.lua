@@ -114,4 +114,16 @@ teleportButton.MouseButton1Click:Connect(function()
     else
         print("No tool found!")  -- Debug output if no tool is found
     end
+
+    -- Auto punch: simulate punching every 0.5 seconds
+    while true do
+        wait(0.5)  -- Adjust the time interval between punches (in seconds)
+        if tool then
+            tool:Activate()  -- Activate the tool to simulate punching
+            print("Auto-punch activated")
+        else
+            print("No tool found for auto-punch!")
+            break
+        end
+    end
 end)
