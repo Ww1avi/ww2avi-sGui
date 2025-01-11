@@ -35,3 +35,56 @@ local Window = Rayfield:CreateWindow({
 })
 
 local Tab = Window:CreateTab("Auto Rebith", 4483362458) -- Title, Image
+
+Rayfield:Notify({
+   Title = "Notification Title",
+   Content = "You Executed the script please wait!",
+   Duration = 6.5,
+   Image = 4483362458,
+})
+
+local Button = MainTab:CreateButton({
+   Name = "Auto Punch Jungle rock",
+   Callback = function()
+
+            -- Variables
+local autoPunch = true
+
+-- Function to auto-punch the Jungle Rock
+local function autoPunchRock()
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+    local tool = player.Backpack:FindFirstChildOfClass("Tool") or character:FindFirstChildOfClass("Tool")
+
+    if not tool then
+        warn("No tool found to punch with!")
+        return
+    end
+
+    -- Toggle auto-punch
+    autoPunch = not autoPunch
+
+    if autoPunch then
+        print("Auto-Punch started!")
+        while autoPunch do
+            -- Teleport to the Jungle Rock
+            local rockPosition = Vector3.new(-7694.34375, 6.8115, 2869.5095) -- Update the position as needed
+            humanoidRootPart.CFrame = CFrame.new(rockPosition)
+
+            -- Activate the tool to punch
+            tool:Activate()
+            print("Punching Jungle Rock...")
+
+            wait(0.5) -- Delay between punches
+        end
+    else
+        print("Auto-Punch stopped!")
+    end
+end
+
+-- Attach this function to a button
+local autoPunchButton = createContentButton("Auto-Punch Jungle Rock", UDim2.new(0, 10, 0, 170)) -- Adjust position as needed
+autoPunchButton.MouseButton1Click:Connect(autoPunchRock)
+   end,
+})
