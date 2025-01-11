@@ -45,7 +45,7 @@ end)
 -- ... (Rest of your GUI code) ...
 
 -- Make the GUI movable by dragging the title bar
-local dragging = false
+local dragging = True
 local dragStart = nil
 local startPos = nil
 
