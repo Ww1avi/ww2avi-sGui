@@ -46,23 +46,24 @@ Rayfield:Notify({
 local Button = Tab:CreateButton({
    Name = "Auto Punch Jungle rock",
    Callback = function()
--- Auto-Punch Toggle Variable
+
+         -- Auto-Punch Toggle Variable
 local autoPunch = false
 
 -- Function to Auto-Punch the Ancient Jungle Rock
 local function autoPunchRock()
     local player = game.Players.LocalPlayer
     local character = player.Character or player.CharacterAdded:Wait()
-    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart", 5)
     local tool = player.Backpack:FindFirstChildOfClass("Tool") or character:FindFirstChildOfClass("Tool")
 
     if not humanoidRootPart then
-        warn("HumanoidRootPart not found!")
+        warn("[ERROR] HumanoidRootPart not found!")
         return
     end
 
     if not tool then
-        warn("No tool found to punch with!")
+        warn("[ERROR] No tool found in the backpack or character!")
         return
     end
 
@@ -70,18 +71,29 @@ local function autoPunchRock()
     autoPunch = not autoPunch
 
     if autoPunch then
-        print("Auto-Punch started!")
-        while autoPunch and task.wait(0.5) do
-            -- Teleport to Ancient Jungle Rock's position
-            local rockPosition = Vector3.new(-7694.34375, 6.8115, 2869.5095) -- Update with the rock's exact position if needed
+        print("[INFO] Auto-Punch started!")
+        while autoPunch do
+            -- Ensure the tool still exists
+            tool = player.Backpack:FindFirstChildOfClass("Tool") or character:FindFirstChildOfClass("Tool")
+            if not tool then
+                warn("[ERROR] Tool was lost! Stopping Auto-Punch.")
+                autoPunch = false
+                break
+            end
+
+            -- Teleport to the Ancient Jungle Rock's position
+            local rockPosition = Vector3.new(-7694.34375, 6.8115, 2869.5095) -- Update if needed
             humanoidRootPart.CFrame = CFrame.new(rockPosition)
+            print("[INFO] Teleported to Ancient Jungle Rock.")
 
             -- Activate the tool to simulate punching
             tool:Activate()
-            print("Punching Ancient Jungle Rock...")
+            print("[INFO] Punching Ancient Jungle Rock...")
+
+            task.wait(0.5) -- Adjust delay between punches as needed
         end
     else
-        print("Auto-Punch stopped!")
+        print("[INFO] Auto-Punch stopped!")
     end
 end
    end,
