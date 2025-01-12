@@ -43,7 +43,7 @@ Rayfield:Notify({
    Image = 4483362458,
 })
 
-local Button = MainTab:CreateButton({
+local Button = Tab:CreateButton({
    Name = "Auto Punch Jungle rock",
    Callback = function()
    -- The function that takes place when the button is pressed
