@@ -46,14 +46,14 @@ Rayfield:Notify({
 local Button = Tab:CreateButton({
    Name = "Auto Punch Jungle rock",
    Callback = function()
-   -- Auto-Punch Toggle Variable
+-- Auto-Punch Toggle Variable
 local autoPunch = false
 
--- Function to Auto-Punch the Jungle Rock
+-- Function to Auto-Punch the Ancient Jungle Rock
 local function autoPunchRock()
     local player = game.Players.LocalPlayer
     local character = player.Character or player.CharacterAdded:Wait()
-    local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
     local tool = player.Backpack:FindFirstChildOfClass("Tool") or character:FindFirstChildOfClass("Tool")
 
     if not humanoidRootPart then
@@ -71,16 +71,14 @@ local function autoPunchRock()
 
     if autoPunch then
         print("Auto-Punch started!")
-        while autoPunch do
-            -- Teleport to Jungle Rock's position
-            local rockPosition = Vector3.new(-7694.34375, 6.8115, 2869.5095) -- Update if needed
+        while autoPunch and task.wait(0.5) do
+            -- Teleport to Ancient Jungle Rock's position
+            local rockPosition = Vector3.new(-7694.34375, 6.8115, 2869.5095) -- Update with the rock's exact position if needed
             humanoidRootPart.CFrame = CFrame.new(rockPosition)
 
             -- Activate the tool to simulate punching
             tool:Activate()
-            print("Punching Jungle Rock...")
-
-            wait(0.5) -- Delay between punches
+            print("Punching Ancient Jungle Rock...")
         end
     else
         print("Auto-Punch stopped!")
