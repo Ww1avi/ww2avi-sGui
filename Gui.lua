@@ -29,55 +29,34 @@ PremiumOnly = <bool> - Makes the tab accessible to Sirus Premium users only.
 Tab:AddButton({
 	Name = "Infinite Jump",
 	Callback = function ()
-            local InfiniteJumpEnabled = true
-game:GetService("UserInputService").JumpRequest:connect(function()
-	if InfiniteJumpEnabled then
-		game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
-	end
-end)
-local InfiniteJump = CreateButton("Infinite Jump: On", StuffFrame)
-InfiniteJump.Position = UDim2.new(0,10,0,130)
-InfiniteJump.Size = UDim2.new(0,150,0,30)
-InfiniteJump.MouseButton1Click:connect(function()
-	local state = InfiniteJump.Text:sub(string.len("Infinite Jump: ") + 1) --too lazy to count lol
-	local new = state == "Off" and "On" or state == "On" and "Off"
-	InfiniteJumpEnabled = new == "On"
-	InfiniteJump.Text = "Infinite Jump: " .. new
-end)
+            
+       --Toggles the infinite jump between on or off on every script run
+_G.infinjump = not _G.infinjump
+
+if _G.infinJumpStarted == nil then
+	--Ensures this only runs once to save resources
+	_G.infinJumpStarted = true
+	
+	--Notifies readiness
+	game.StarterGui:SetCore("SendNotification", {Title="Youtube Hub"; Text="Infinite Jump Activated!"; Duration=5;})
+
+	--The actual infinite jump
+	local plr = game:GetService('Players').LocalPlayer
+	local m = plr:GetMouse()
+	m.KeyDown:connect(function(k)
+		if _G.infinjump then
+			if k:byte() == 32 then
+			humanoid = game:GetService'Players'.LocalPlayer.Character:FindFirstChildOfClass('Humanoid')
+			humanoid:ChangeState('Jumping')
+			wait()
+			humanoid:ChangeState('Seated')
+			end
+		end
+	end)
+end
    end,
 })
 
-
-})
---[[
-Name = <string> - The name of the button.
-Callback = <function> - The function of the button.
-]]
-
-
-local Tab = Window:MakeTab({
-	Name = "Rebith",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-
---[[
-Name = <string> - The name of the tab.
-Icon = <string> - The icon of the tab.
-PremiumOnly = <bool> - Makes the tab accessible to Sirus Premium users only.
-]]
-
-local Tab = Window:MakeTab({
-	Name = "Glitcher",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-
---[[
-Name = <string> - The name of the tab.
-Icon = <string> - The icon of the tab.
-PremiumOnly = <bool> - Makes the tab accessible to Sirus Premium users only.
-]]
 
 OrionLib:MakeNotification({
 	Name = "Notification!",
