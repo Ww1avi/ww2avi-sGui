@@ -14,7 +14,7 @@ Icon = <string> - URL to the image you want displayed on the window.
 CloseCallback = <function> - Function to execute when the window is closed.
 ]]
 
-local MainTab = Window:MakeTab({
+local Tab = Window:MakeTab({
 	Name = "Main",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
@@ -26,34 +26,21 @@ Icon = <string> - The icon of the tab.
 PremiumOnly = <bool> - Makes the tab accessible to Sirus Premium users only.
 ]]
 
-MainTab:AddButton({
-	Name = "Infinite Jump",
+Tab:AddButton({
+	Name = "Auto Train",
 	Callback = function ()
-            
-       --Toggles the infinite jump between on or off on every script run
-_G.infinjump = not _G.infinjump
+            local player = game.Players.LocalPlayer
 
-if _G.infinJumpStarted == nil then
-	--Ensures this only runs once to save resources
-	_G.infinJumpStarted = true
-	
-	--Notifies readiness
-	game.StarterGui:SetCore("SendNotification", {Title="Ww2avi's"; Text="Infinite Jump Activated!"; Duration=5;})
-
-	--The actual infinite jump
-	local plr = game:GetService('Players').LocalPlayer
-	local m = plr:GetMouse()
-	m.KeyDown:connect(function(k)
-		if _G.infinjump then
-			if k:byte() == 32 then
-			humanoid = game:GetService'Players'.LocalPlayer.Character:FindFirstChildOfClass('Humanoid')
-			humanoid:ChangeState('Jumping')
-			wait()
-			humanoid:ChangeState('Seated')
-			end
-		end
-	end)
+-- Function to auto-train strength
+function autoTrain()
+    while true do
+        -- Add training logic here
+        wait(1) -- adjust the wait time as needed
+    end
 end
+
+-- Call to start auto-training
+autoTrain()
    end,
 })
 
