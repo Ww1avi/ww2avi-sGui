@@ -26,7 +26,7 @@ Icon = <string> - The icon of the tab.
 PremiumOnly = <bool> - Makes the tab accessible to Sirus Premium users only.
 ]]
 
-Tab:AddButton({
+MainTab:AddButton({
 	Name = "Infinite Jump",
 	Callback = function ()
             
@@ -38,7 +38,7 @@ if _G.infinJumpStarted == nil then
 	_G.infinJumpStarted = true
 	
 	--Notifies readiness
-	game.StarterGui:SetCore("SendNotification", {Title="Youtube Hub"; Text="Infinite Jump Activated!"; Duration=5;})
+	game.StarterGui:SetCore("SendNotification", {Title="Ww2avi's"; Text="Infinite Jump Activated!"; Duration=5;})
 
 	--The actual infinite jump
 	local plr = game:GetService('Players').LocalPlayer
