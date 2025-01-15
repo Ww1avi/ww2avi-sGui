@@ -28,7 +28,12 @@ PremiumOnly = <bool> - Makes the tab accessible to Sirus Premium users only.
 
 Tab:AddButton({
 	Name = "Infinite Jump",
-	Callback = local InfiniteJumpEnabled = true
+	Callback = function ()
+      		print("button pressed")
+  	end    
+})
+
+local InfiniteJumpEnabled = true
 game:GetService("UserInputService").JumpRequest:connect(function()
 	if InfiniteJumpEnabled then
 		game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
@@ -44,11 +49,7 @@ InfiniteJump.MouseButton1Click:connect(function()
 	InfiniteJump.Text = "Infinite Jump: " .. new
 end)
    end,
-})()
-      		print("button pressed")
-  	end    
 })
-
 --[[
 Name = <string> - The name of the button.
 Callback = <function> - The function of the button.
