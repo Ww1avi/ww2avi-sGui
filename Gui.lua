@@ -65,3 +65,30 @@ end
 spawn(autoPunch)
    end,
 })
+
+local Button = Tab:CreateButton({
+   Name = "Auto hit Muscle king Mountain",
+   Callback = function()
+   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-9050.13, 16.53, -6062.51)
+         -- Auto-Punch Script for Muscle Legends
+local player = game.Players.LocalPlayer
+local tool = player.Backpack:FindFirstChild("Punch") -- Replace "Punch" with the tool's name
+
+if tool then
+    tool.Parent = player.Character -- Equip the tool
+end
+
+-- Function to simulate punching
+local function autoPunch()
+    while true do
+        wait(0.1) -- Delay between punches
+        if tool and tool.Parent == player.Character then
+            tool:Activate() -- Simulate punch activation
+        end
+    end
+end
+
+-- Run the auto-punch function
+spawn(autoPunch)
+   end,
+})
