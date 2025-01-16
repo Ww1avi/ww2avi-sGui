@@ -229,3 +229,43 @@ spawn(autoPunch)
 })
 
 local Paragraph = Tab:CreateParagraph({Title = "Enjoy!", Content = "Script Made by Ww2avi"})
+
+local Tab = Window:CreateTab("Rebith Tab", 4483362458) -- Title, Image
+
+local Toggle = Tab:CreateToggle({
+   Name = "Auto Rebith",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+  -- Auto Rebirth Script for Muscle Legends
+-- WARNING: Use at your own risk. Exploiting games is against Roblox's Terms of Service.
+
+-- Variables
+local player = game.Players.LocalPlayer
+local replicatedStorage = game:GetService("ReplicatedStorage")
+local autoRebirthEnabled = true -- Toggle this to enable/disable auto-rebirth
+
+-- Function to auto rebirth
+local function autoRebirth()
+    while autoRebirthEnabled do
+        wait(1) -- Adjust the delay to match the game's rebirth cooldown
+        
+        -- Find the rebirth RemoteEvent
+        local rebirthEvent = replicatedStorage:FindFirstChild("Rebirth") -- Replace "Rebirth" with the actual event name
+
+        if rebirthEvent and rebirthEvent:IsA("RemoteEvent") then
+            pcall(function()
+                rebirthEvent:FireServer() -- Trigger the rebirth
+            end)
+        else
+            warn("Rebirth RemoteEvent not found!")
+            break
+        end
+    end
+end
+
+-- Start the Auto Rebirth loop
+spawn(autoRebirth)
+   -- The variable (Value) is a boolean on whether the toggle is true or false
+   end,
+})
