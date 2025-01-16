@@ -135,7 +135,7 @@ end
 -- Function to simulate punching
 local function autoPunch()
     while true do
-        wait(0.5) -- Delay between punches
+        wait(0.1) -- Delay between punches
         if tool and tool.Parent == player.Character then
             tool:Activate() -- Simulate punch activation
         end
@@ -162,7 +162,7 @@ end
 -- Function to simulate punching
 local function autoPunch()
     while true do
-        wait(0.5) -- Delay between punches
+        wait(0.1) -- Delay between punches
         if tool and tool.Parent == player.Character then
             tool:Activate() -- Simulate punch activation
         end
@@ -171,5 +171,59 @@ end
 
 -- Run the auto-punch function
 spawn(autoPunch)  
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Auto hit Frozen Rock",
+   Callback = function()
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2588.43, 14.66, -269.86)
+    -- Auto-Punch Script for Muscle Legends
+local player = game.Players.LocalPlayer
+local tool = player.Backpack:FindFirstChild("Punch") -- Replace "Punch" with the tool's name
+
+if tool then
+    tool.Parent = player.Character -- Equip the tool
+end
+
+-- Function to simulate punching
+local function autoPunch()
+    while true do
+        wait(0.1) -- Delay between punches
+        if tool and tool.Parent == player.Character then
+            tool:Activate() -- Simulate punch activation
+        end
+    end
+end
+
+-- Run the auto-punch function
+spawn(autoPunch)     
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Auto hit Tiny Rock",
+   Callback = function()
+   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(12.32, 14.85, 2092.67)
+         -- Auto-Punch Script for Muscle Legends
+local player = game.Players.LocalPlayer
+local tool = player.Backpack:FindFirstChild("Punch") -- Replace "Punch" with the tool's name
+
+if tool then
+    tool.Parent = player.Character -- Equip the tool
+end
+
+-- Function to simulate punching
+local function autoPunch()
+    while true do
+        wait(0.1) -- Delay between punches
+        if tool and tool.Parent == player.Character then
+            tool:Activate() -- Simulate punch activation
+        end
+    end
+end
+
+-- Run the auto-punch function
+spawn(autoPunch)
    end,
 })
