@@ -35,3 +35,10 @@ local Window = Rayfield:CreateWindow({
 })
 
 local Tab = Window:CreateTab("🗻Rocks", 4483362458) -- Title, Image
+
+local Button = Tab:CreateButton({
+   Name = "Auto hit Ancient jungle rock",
+   Callback = function()
+   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-7333.92139, 47.7551994, 2099.61816, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+   end,
+})
