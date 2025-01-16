@@ -227,3 +227,12 @@ end
 spawn(autoPunch)
    end,
 })
+
+local Button = Tab:CreateButton({
+   Name = "Auto rebith",
+   Callback = function()
+   -- The function that takes place when the button is pressed
+   end,
+})
+
+local Paragraph = Tab:CreateParagraph({Title = "Paragraph Example", Content = "Paragraph Example"})
