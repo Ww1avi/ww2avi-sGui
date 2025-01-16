@@ -39,8 +39,7 @@ local Tab = Window:CreateTab("🗻Rocks", 4483362458) -- Title, Image
 local Button = Tab:CreateButton({
    Name = "Auto hit Ancient jungle rock",
    Callback = function()
-   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-7708.71, 6.81, 2893.96)
-         -- Auto-Punch Script for Muscle Legends
+   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-7708.71, 6.81, 2893.96)-- Auto-Punch Script for Muscle Legends (Faster Version)
 local player = game.Players.LocalPlayer
 local tool = player.Backpack:FindFirstChild("Punch") -- Replace "Punch" with the tool's name
 
@@ -48,10 +47,10 @@ if tool then
     tool.Parent = player.Character -- Equip the tool
 end
 
--- Function to simulate punching
+-- Function to simulate rapid punching
 local function autoPunch()
     while true do
-        wait(0.5) -- Delay between punches
+        task.wait(0.1) -- Reduce the delay for faster punches (adjust as needed)
         if tool and tool.Parent == player.Character then
             tool:Activate() -- Simulate punch activation
         end
