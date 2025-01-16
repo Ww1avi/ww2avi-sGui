@@ -57,7 +57,7 @@ end
 -- Function to simulate punching
 local function autoPunch()
     while true do
-        wait(0.5) -- Delay between punches
+        wait(0.1) -- Delay between punches
         if tool and tool.Parent == player.Character then
             tool:Activate() -- Simulate punch activation
         end
