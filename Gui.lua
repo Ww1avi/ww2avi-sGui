@@ -237,46 +237,6 @@ local Toggle = Tab:CreateToggle({
    CurrentValue = false,
    Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(Value)
-         -- Auto Rebirth Script for a Button Click System
-
--- Variables
-local player = game.Players.LocalPlayer
-local confirmButtonName = "Confirm" -- Replace with the exact name of the Confirm button
-local autoRebirthEnabled = true -- Toggle to enable/disable auto rebirth
-
--- Function to Auto Rebirth
-local function autoRebirth()
-    while autoRebirthEnabled do
-        wait(1) -- Adjust the delay based on rebirth requirements
-
-        -- Find the Confirm button in the player's UI
-        local playerGui = player:WaitForChild("PlayerGui")
-        local rebirthGui = playerGui:FindFirstChild("Rebirth") -- Replace "Rebirth" with the exact GUI name
-        if rebirthGui then
-            local confirmButton = rebirthGui:FindFirstChild(confirmButtonName, true) -- Searches recursively
-            if confirmButton and confirmButton:IsA("TextButton") then
-                pcall(function()
-                    confirmButton:Activate() -- Simulate a button click
-                end)
-            else
-                warn("Confirm button not found!")
-            end
-        else
-            warn("Rebirth GUI not found!")
-        end
-    end
-end
-
--- Start Auto Rebirth
-spawn(autoRebirth)
-
--- Toggle Auto Rebirth with Key Press
-game:GetService("UserInputService").InputBegan:Connect(function(input)
-    if input.KeyCode == Enum.KeyCode.R then -- Press 'R' to toggle auto rebirth
-        autoRebirthEnabled = not autoRebirthEnabled
-        print("Auto Rebirth is now " .. (autoRebirthEnabled and "enabled" or "disabled") .. ".")
-    end
-end)
-   -- The variable (Value) is a boolean on whether the toggle is true or false
+         game:GetService("ReplicatedStorage").rEvents.rebirthRemote:InvokeServer("rebirthRequest")
    end,
 })
