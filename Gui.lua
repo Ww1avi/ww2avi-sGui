@@ -240,3 +240,34 @@ local Toggle = Tab:CreateToggle({
          game:GetService("ReplicatedStorage").rEvents.rebirthRemote:InvokeServer("rebirthRequest")
    end,
 })
+
+
+local Tab = Window:CreateTab("Eat Boosts", 4483362458) -- Title, Image
+
+local Button = Tab:CreateButton({
+   Name = "Eat Protein Shake",
+   Callback = function()
+   game:GetService("Players").LocalPlayer.muscleEvent:FireServer("proteinShake",workspace.Muhammed5820586["Protein Shake"])
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Eat Though Bar",
+   Callback = function()
+   game:GetService("Players").LocalPlayer.muscleEvent:FireServer("toughBar",workspace.Muhammed5820586["TOUGH Bar"])
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Eat Ultra shake",
+   Callback = function()
+   game:GetService("Players").LocalPlayer.muscleEvent:FireServer("ultraShake",workspace.Muhammed5820586["ULTRA Shake"])
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Eat Energy Bar",
+   Callback = function()
+   game:GetService("Players").LocalPlayer.muscleEvent:FireServer("energyBar",workspace.Muhammed5820586["Energy Bar"])
+   end,
+})
