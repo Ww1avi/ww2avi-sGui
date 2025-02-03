@@ -272,20 +272,24 @@ local Button = Tab:CreateButton({
    end,
 })
 
-local PingTab = Window:CreateTab("🌐 Ping", 4483362458) -- Create a new tab for Ping
+local PingTab = Window:CreateTab("🌐 Ping", 4483362458) -- Create a Ping tab
 
-local PingLabel = PingTab:CreateParagraph({
-    Title = "Ping",
-    Content = "Loading..."
-})
+-- Function to create or update the paragraph
+local function updatePing()
+    local ping = game.Players.LocalPlayer:GetNetworkPing() * 1000 -- Convert to ms
+    PingTab:RemoveParagraph("PingLabel") -- Remove existing paragraph
 
+    PingTab:CreateParagraph({
+        Title = "Ping",
+        Content = "Ping: " .. math.floor(ping) .. " ms",
+        ParagraphId = "PingLabel" -- Unique ID for updating
+    })
+end
+
+-- Update ping every second
 task.spawn(function()
     while true do
-        local ping = game.Players.LocalPlayer:GetNetworkPing() * 1000 -- Convert to ms
-        PingTab:CreateParagraph({ -- Create a new paragraph each time
-            Title = "Ping",
-            Content = "Ping: " .. math.floor(ping) .. " ms"
-        })
+        updatePing()
         task.wait(1) -- Update every second
     end
 end)
