@@ -34,7 +34,7 @@ local Window = Rayfield:CreateWindow({
    }
 })
 
-local Tab = Window:CreateTab("Rocks", aperture) -- Title, Image
+local Tab = Window:CreateTab("Rocks", 4483362458) -- Title, Image
 
 local Button = Tab:CreateButton({
    Name = "Auto hit Ancient jungle rock",
