@@ -1,7 +1,7 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "ww2aviXnuggiez Script",
+   Name = "ww2avi's script",
    Icon = code, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
    LoadingTitle = "ww2avi's Script",
    LoadingSubtitle = "by Ww2avi",
@@ -34,7 +34,7 @@ local Window = Rayfield:CreateWindow({
    }
 })
 
-local Tab = Window:CreateTab("🗻Rocks", 4483362458) -- Title, Image
+local Tab = Window:CreateTab("Rocks", aperture) -- Title, Image
 
 local Button = Tab:CreateButton({
    Name = "Auto hit Ancient jungle rock",
@@ -230,7 +230,7 @@ spawn(autoPunch)
 
 local Paragraph = Tab:CreateParagraph({Title = "Enjoy!", Content = "Script Made by Ww2avi"})
 
-local Tab = Window:CreateTab("Rebith Tab", 4483362458) -- Title, Image
+local Tab = Window:CreateTab("Rebith Tab", refresh-ccw) -- Title, Image
 
 local Toggle = Tab:CreateToggle({
    Name = "Auto Rebith",
