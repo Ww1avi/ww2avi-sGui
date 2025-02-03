@@ -271,3 +271,18 @@ local Button = Tab:CreateButton({
    game:GetService("Players").LocalPlayer.muscleEvent:FireServer("energyBar",workspace.Muhammed5820586["Energy Bar"])
    end,
 })
+
+local PingTab = Window:CreateTab("🌐 Ping", 4483362458) -- Ping Tab
+
+local PingLabel = PingTab:CreateParagraph({
+    Title = "Ping",
+    Content = "Loading..."
+})
+
+task.spawn(function()
+    while true do
+        local ping = game.Players.LocalPlayer:GetNetworkPing() * 1000 -- Convert to ms
+        PingLabel:Set({Content = "Ping: " .. math.floor(ping) .. " ms"})
+        task.wait(1) -- Update every second
+    end
+end)
