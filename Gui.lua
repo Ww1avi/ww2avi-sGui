@@ -264,3 +264,17 @@ setreadonly(mt, true)
    -- The variable (Value) is a boolean on whether the toggle is true or false
    end,
 })
+
+local Tab = Window:CreateTab("Auto Equip", 4483362458) -- Title, Image
+
+local Dropdown = Tab:CreateDropdown({
+   Name = "Auto Equip",
+   Options = {"Auto Equip Golden Viking","Option 2"},
+   CurrentOption = {"Auto Equip Golden Viking"},
+   MultipleOptions = false,
+   Flag = "Dropdown1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Options)
+   game:GetService("ReplicatedStorage").rEvents.equipPetEvent:FireServer("equipPet",game:GetService("Players").LocalPlayer.petsFolder.Epic["Golden Viking"])
+   -- The variable (Options) is a table of strings for the current selected options
+   end,
+})
