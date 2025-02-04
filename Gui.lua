@@ -267,23 +267,54 @@ setreadonly(mt, true)
 
 local Tab = Window:CreateTab("Auto Equip", 4483362458) -- Title, Image
 
-
 local Dropdown = Tab:CreateDropdown({
-   Name = "Auto Equip",
-   Options = {"Equip Golden Viking", "Equip Magic Butterfly"},
+   Name = "Pet Dropdown",
+   Options = {
+      "Equip Golden Viking", "Equip Magic Butterfly", "Equip Flame Lord", "Equip Neon Guardian", "Equip Aether Spirit Bunny", 
+      "Equip Flaming Hedgehog", "Equip Darkstar Hunter", "Equip Cybernetic Showdown Dragon", "Equip Mystic Unicorn", "Equip Blue Shark"
+   },
    CurrentOption = {"Equip Golden Viking"},
    MultipleOptions = false,
    Flag = "Dropdown1", -- Unique flag for saving configuration
    Callback = function(Options)
       if Options[1] == "Equip Golden Viking" then
-game:GetService("ReplicatedStorage").rEvents.equipPetEvent:FireServer("equipPet",game:GetService("Players").LocalPlayer.petsFolder.Epic["Golden Viking"])
-         print("Option 1 Selected")
+         game:GetService("ReplicatedStorage").rEvents.equipPetEvent:FireServer("equipPet", game:GetService("Players").LocalPlayer.petsFolder.Epic["Golden Viking"])
+         print("Equip Golden Viking")
       elseif Options[1] == "Equip Magic Butterfly" then
-game:GetService("ReplicatedStorage").rEvents.equipPetEvent:FireServer("equipPet",game:GetService("Players").LocalPlayer.petsFolder.Unique["Magic Butterfly"])
-         print("Option 2 Selected")
-         -- Add the function you want for Option 2 here
-         -- For example, call a function:
-         -- YourFunctionForOption2()
+         game:GetService("ReplicatedStorage").rEvents.equipPetEvent:FireServer("equipPet", game:GetService("Players").LocalPlayer.petsFolder.Unique["Magic Butterfly"])
+         print("Equip Magic Butterfly")
+      elseif Options[1] == "Equip Flame Lord" then
+         -- Script for Equip Flame Lord
+         game:GetService("ReplicatedStorage").rEvents.equipPetEvent:FireServer("equipPet", game:GetService("Players").LocalPlayer.petsFolder.Unique["Flame Lord"])
+         print("Equip Flame Lord")
+      elseif Options[1] == "Equip Neon Guardian" then
+         -- Script for Equip Neon Guardian
+         game:GetService("ReplicatedStorage").rEvents.equipPetEvent:FireServer("equipPet", game:GetService("Players").LocalPlayer.petsFolder.Unique["Neon Guardian"])
+         print("Equip Neon Guardian")
+      elseif Options[1] == "Equip Aether Spirit Bunny" then
+         -- Script for Equip Aether Spirit Bunny
+         game:GetService("ReplicatedStorage").rEvents.equipPetEvent:FireServer("equipPet", game:GetService("Players").LocalPlayer.petsFolder.Unique["Aether Spirit Bunny"])
+         print("Equip Aether Spirit Bunny")
+      elseif Options[1] == "Equip Flaming Hedgehog" then
+         -- Script for Equip Flaming Hedgehog
+         game:GetService("ReplicatedStorage").rEvents.equipPetEvent:FireServer("equipPet", game:GetService("Players").LocalPlayer.petsFolder.Unique["Flaming Hedgehog"])
+         print("Equip Flaming Hedgehog")
+      elseif Options[1] == "Equip Darkstar Hunter" then
+         -- Script for Equip Darkstar Hunter
+         game:GetService("ReplicatedStorage").rEvents.equipPetEvent:FireServer("equipPet", game:GetService("Players").LocalPlayer.petsFolder.Unique["Darkstar Hunter"])
+         print("Equip Darkstar Hunter")
+      elseif Options[1] == "Equip Cybernetic Showdown Dragon" then
+         -- Script for Equip Cybernetic Showdown Dragon
+         game:GetService("ReplicatedStorage").rEvents.equipPetEvent:FireServer("equipPet", game:GetService("Players").LocalPlayer.petsFolder.Unique["Cybernetic Showdown Dragon"])
+         print("Equip Cybernetic Showdown Dragon")
+      elseif Options[1] == "Equip Mystic Unicorn" then
+         -- Script for Equip Mystic Unicorn
+         game:GetService("ReplicatedStorage").rEvents.equipPetEvent:FireServer("equipPet", game:GetService("Players").LocalPlayer.petsFolder.Unique["Mystic Unicorn"])
+         print("Equip Mystic Unicorn")
+      elseif Options[1] == "Equip Blue Shark" then
+         -- Script for Equip Blue Shark
+         game:GetService("ReplicatedStorage").rEvents.equipPetEvent:FireServer("equipPet", game:GetService("Players").LocalPlayer.petsFolder.Epic["Blue Shark"])
+         print("Equip Blue Shark")
       end
    end,
 })
