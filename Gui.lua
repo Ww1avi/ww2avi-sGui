@@ -278,3 +278,23 @@ local Dropdown = Tab:CreateDropdown({
    -- The variable (Options) is a table of strings for the current selected options
    end,
 })
+
+local Dropdown = Tab:CreateDropdown({
+   Name = "Dropdown Example",
+   Options = {"Option 1", "Option 2"},
+   CurrentOption = {"Option 1"},
+   MultipleOptions = false,
+   Flag = "Dropdown1", -- Unique flag for saving configuration
+   Callback = function(Options)
+      if Options[1] == "Option 1" then
+game:GetService("ReplicatedStorage").rEvents.equipPetEvent:FireServer("equipPet",game:GetService("Players").LocalPlayer.petsFolder.Epic["Golden Viking"])
+         print("Option 1 Selected")
+      elseif Options[1] == "Option 2" then
+game:GetService("ReplicatedStorage").rEvents.equipPetEvent:FireServer("equipPet",game:GetService("Players").LocalPlayer.petsFolder.Unique["Magic Butterfly"])
+         print("Option 2 Selected")
+         -- Add the function you want for Option 2 here
+         -- For example, call a function:
+         -- YourFunctionForOption2()
+      end
+   end,
+})
