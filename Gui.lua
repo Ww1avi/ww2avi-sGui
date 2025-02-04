@@ -267,29 +267,18 @@ setreadonly(mt, true)
 
 local Tab = Window:CreateTab("Auto Equip", 4483362458) -- Title, Image
 
-local Dropdown = Tab:CreateDropdown({
-   Name = "Auto Equip",
-   Options = {"Auto Equip Golden Viking","Option 2"},
-   CurrentOption = {"Auto Equip Golden Viking"},
-   MultipleOptions = false,
-   Flag = "Dropdown1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Options)
-   game:GetService("ReplicatedStorage").rEvents.equipPetEvent:FireServer("equipPet",game:GetService("Players").LocalPlayer.petsFolder.Epic["Golden Viking"])
-   -- The variable (Options) is a table of strings for the current selected options
-   end,
-})
 
 local Dropdown = Tab:CreateDropdown({
-   Name = "Dropdown Example",
-   Options = {"Option 1", "Option 2"},
-   CurrentOption = {"Option 1"},
+   Name = "Auto Equip",
+   Options = {"Equip Golden Viking", "Equip Magic Butterfly"},
+   CurrentOption = {"Equip Golden Viking"},
    MultipleOptions = false,
    Flag = "Dropdown1", -- Unique flag for saving configuration
    Callback = function(Options)
-      if Options[1] == "Option 1" then
+      if Options[1] == "Equip Golden Viking" then
 game:GetService("ReplicatedStorage").rEvents.equipPetEvent:FireServer("equipPet",game:GetService("Players").LocalPlayer.petsFolder.Epic["Golden Viking"])
          print("Option 1 Selected")
-      elseif Options[1] == "Option 2" then
+      elseif Options[1] == "Equip Magic Butterfly" then
 game:GetService("ReplicatedStorage").rEvents.equipPetEvent:FireServer("equipPet",game:GetService("Players").LocalPlayer.petsFolder.Unique["Magic Butterfly"])
          print("Option 2 Selected")
          -- Add the function you want for Option 2 here
