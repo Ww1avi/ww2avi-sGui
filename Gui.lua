@@ -318,3 +318,47 @@ local Dropdown = Tab:CreateDropdown({
       end
    end,
 })
+
+local Tab = Window:CreateTab("Auto Hatch", 4483362458) -- Title, Image
+
+local Button = Tab:CreateButton({
+   Name = "Hatch Frost Crystal",
+   Callback = function()
+   game:GetService("ReplicatedStorage").rEvents.openCrystalRemote:InvokeServer("openCrystal","Frost Crystal")
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Mythical Crystal",
+   Callback = function()
+game:GetService("ReplicatedStorage").rEvents.openCrystalRemote:InvokeServer("openCrystal","Mythical Crystal")
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Inferno Crystal",
+   Callback = function()
+ game:GetService("ReplicatedStorage").rEvents.openCrystalRemote:InvokeServer("openCrystal","Inferno Crystal")
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Elite Crystal",
+   Callback = function()
+game:GetService("ReplicatedStorage").rEvents.openCrystalRemote:InvokeServer("openCrystal","Muscle Elite Crystal")
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Galaxy Oracle Crystal",
+   Callback = function()
+game:GetService("ReplicatedStorage").rEvents.openCrystalRemote:InvokeServer("openCrystal","Galaxy Oracle Crystal")
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Jungle Crystal",
+   Callback = function()
+   game:GetService("ReplicatedStorage").rEvents.openCrystalRemote:InvokeServer("openCrystal","Jungle Crystal")
+   end,
+})
