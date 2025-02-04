@@ -3,7 +3,7 @@ local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 local Window = Rayfield:CreateWindow({
    Name = "ww2aviXnuggiez Script",
    Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
-   LoadingTitle = "ww2aviXnuggiez Script",
+   LoadingTitle = "ww2avi's Script",
    LoadingSubtitle = "by Ww2avi",
    Theme = "Dark Blue", -- Check https://docs.sirius.menu/rayfield/configuration/themes
 
@@ -237,55 +237,30 @@ local Toggle = Tab:CreateToggle({
    CurrentValue = false,
    Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(Value)
-         game:GetService("ReplicatedStorage").rEvents.rebirthRemote:InvokeServer("rebirthRequest")
+         local e = game:GetService("ReplicatedStorage").rEvents.rebirthRemote
+while true do
+    for _ = 1, 2 do e:InvokeServer("rebirthRequest") end
+    task.wait(1)
+end
    end,
 })
 
-
-local Tab = Window:CreateTab("Eat Boosts", 4483362458) -- Title, Image
-
-local Button = Tab:CreateButton({
-   Name = "Eat Protein Shake",
-   Callback = function()
-   game:GetService("Players").LocalPlayer.muscleEvent:FireServer("proteinShake",workspace.Muhammed5820586["Protein Shake"])
-   end,
-})
-
-local Button = Tab:CreateButton({
-   Name = "Eat Though Bar",
-   Callback = function()
-   game:GetService("Players").LocalPlayer.muscleEvent:FireServer("toughBar",workspace.Muhammed5820586["TOUGH Bar"])
-   end,
-})
-
-local Button = Tab:CreateButton({
-   Name = "Eat Ultra shake",
-   Callback = function()
-   game:GetService("Players").LocalPlayer.muscleEvent:FireServer("ultraShake",workspace.Muhammed5820586["ULTRA Shake"])
-   end,
-})
-
-local Button = Tab:CreateButton({
-   Name = "Eat Energy Bar",
-   Callback = function()
-   game:GetService("Players").LocalPlayer.muscleEvent:FireServer("energyBar",workspace.Muhammed5820586["Energy Bar"])
-   end,
-})
-
-local PingTab = Window:CreateTab("🌐 Ping", 4483362458) -- Create a new tab for Ping
-
-local PingLabel = PingTab:CreateParagraph({
-    Title = "Ping",
-    Content = "Loading..."
-})
-
-task.spawn(function()
-    while true do
-        local ping = game.Players.LocalPlayer:GetNetworkPing() * 1000 -- Convert to ms
-        PingTab:CreateParagraph({ -- Create a new paragraph each time
-            Title = "Ping",
-            Content = "Ping: " .. math.floor(ping) .. " ms"
-        })
-        task.wait(1) -- Update every second
+local Toggle = Tab:CreateToggle({
+   Name = "Anti Rebiths",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+         local mt = getrawmetatable(game)
+setreadonly(mt, false)
+local oldIndex = mt.__namecall
+mt.__namecall = newcclosure(function(self, ...)
+    local method = getnamecallmethod()
+    if method == "InvokeServer" and self == game:GetService("ReplicatedStorage").rEvents.rebirthRemote then
+        return
     end
+    return oldIndex(self, ...)
 end)
+setreadonly(mt, true)
+   -- The variable (Value) is a boolean on whether the toggle is true or false
+   end,
+})
