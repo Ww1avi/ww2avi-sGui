@@ -1,9 +1,9 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "ww2avi's script",
-   Icon = code, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
-   LoadingTitle = "ww2avi's Script",
+   Name = "ww2aviXnuggiez Script",
+   Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
+   LoadingTitle = "ww2aviXnuggiez Script",
    LoadingSubtitle = "by Ww2avi",
    Theme = "Dark Blue", -- Check https://docs.sirius.menu/rayfield/configuration/themes
 
@@ -22,19 +22,19 @@ local Window = Rayfield:CreateWindow({
       RememberJoins = True -- Set this to false to make them join the discord every time they load it up
    },
 
-   KeySystem =False, -- Set this to true to use our key system
+   KeySystem = false, -- Set this to true to use our key system
    KeySettings = {
-      Title = Key System",
+      Title = "Untitled",
       Subtitle = "Key System",
       Note = "No method of obtaining the key is provided", -- Use this to tell the user how to get a key
       FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
       SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
       GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-      Key = {"Avi"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+      Key = {"Hello"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
    }
 })
 
-local Tab = Window:CreateTab("Rocks", 4483362458) -- Title, Image
+local Tab = Window:CreateTab("🗻Rocks", 4483362458) -- Title, Image
 
 local Button = Tab:CreateButton({
    Name = "Auto hit Ancient jungle rock",
@@ -230,37 +230,62 @@ spawn(autoPunch)
 
 local Paragraph = Tab:CreateParagraph({Title = "Enjoy!", Content = "Script Made by Ww2avi"})
 
-local Tab = Window:CreateTab("Rebith Tab", refresh-ccw) -- Title, Image
+local Tab = Window:CreateTab("Rebith Tab", 4483362458) -- Title, Image
 
 local Toggle = Tab:CreateToggle({
    Name = "Auto Rebith",
    CurrentValue = false,
    Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(Value)
-         local e = game:GetService("ReplicatedStorage").rEvents.rebirthRemote
-while true do
-    for _ = 1, 2 do e:InvokeServer("rebirthRequest") end
-    task.wait(1)
-end
+         game:GetService("ReplicatedStorage").rEvents.rebirthRemote:InvokeServer("rebirthRequest")
    end,
 })
 
-local Toggle = Tab:CreateToggle({
-   Name = "Anti Rebiths",
-   CurrentValue = false,
-   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Value)
-   local mt = getrawmetatable(game)
-setreadonly(mt, false)
-local oldIndex = mt.__namecall
-mt.__namecall = newcclosure(function(self, ...)
-    local method = getnamecallmethod()
-    if method == "InvokeServer" and self == game:GetService("ReplicatedStorage").rEvents.rebirthRemote then
-        return
-    end
-    return oldIndex(self, ...)
-end)
-setreadonly(mt, true)
-   -- The variable (Value) is a boolean on whether the toggle is true or false
+
+local Tab = Window:CreateTab("Eat Boosts", 4483362458) -- Title, Image
+
+local Button = Tab:CreateButton({
+   Name = "Eat Protein Shake",
+   Callback = function()
+   game:GetService("Players").LocalPlayer.muscleEvent:FireServer("proteinShake",workspace.Muhammed5820586["Protein Shake"])
    end,
 })
+
+local Button = Tab:CreateButton({
+   Name = "Eat Though Bar",
+   Callback = function()
+   game:GetService("Players").LocalPlayer.muscleEvent:FireServer("toughBar",workspace.Muhammed5820586["TOUGH Bar"])
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Eat Ultra shake",
+   Callback = function()
+   game:GetService("Players").LocalPlayer.muscleEvent:FireServer("ultraShake",workspace.Muhammed5820586["ULTRA Shake"])
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Eat Energy Bar",
+   Callback = function()
+   game:GetService("Players").LocalPlayer.muscleEvent:FireServer("energyBar",workspace.Muhammed5820586["Energy Bar"])
+   end,
+})
+
+local PingTab = Window:CreateTab("🌐 Ping", 4483362458) -- Create a new tab for Ping
+
+local PingLabel = PingTab:CreateParagraph({
+    Title = "Ping",
+    Content = "Loading..."
+})
+
+task.spawn(function()
+    while true do
+        local ping = game.Players.LocalPlayer:GetNetworkPing() * 1000 -- Convert to ms
+        PingTab:CreateParagraph({ -- Create a new paragraph each time
+            Title = "Ping",
+            Content = "Ping: " .. math.floor(ping) .. " ms"
+        })
+        task.wait(1) -- Update every second
+    end
+end)
