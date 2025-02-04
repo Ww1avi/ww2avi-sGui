@@ -245,3 +245,22 @@ end
    end,
 })
 
+local Toggle = Tab:CreateToggle({
+   Name = "Anti Rebiths",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   local mt = getrawmetatable(game)
+setreadonly(mt, false)
+local oldIndex = mt.__namecall
+mt.__namecall = newcclosure(function(self, ...)
+    local method = getnamecallmethod()
+    if method == "InvokeServer" and self == game:GetService("ReplicatedStorage").rEvents.rebirthRemote then
+        return
+    end
+    return oldIndex(self, ...)
+end)
+setreadonly(mt, true)
+   -- The variable (Value) is a boolean on whether the toggle is true or false
+   end,
+})
